@@ -36,5 +36,21 @@ autocmd BufRead,BufNewFile *.jasmine_fixture set filetype=html
 " Insert ' => '
 autocmd FileType ruby imap  <Space>=><Space>
 
+" Markdown
+" .md, .mdx files read as markdown
+autocmd BufNewFile,BufRead *.md set filetype=markdown
+autocmd BufNewFile,BufRead *.mdx set filetype=markdown
+
 " Open all folds in Markdown.
-autocmd FileType mkd normal zR
+autocmd FileType markdown normal zR
+
+" Soft wrap markdown and open in focus mode
+let g:pencil#wrapModeDefault = 'soft'
+
+" Uncomment below to open markdown files in 'focus' mode
+" autocmd BufRead *.md* :Goyo
+
+augroup pencil
+  autocmd!
+  autocmd FileType markdown call pencil#init()
+augroup END
